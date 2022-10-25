@@ -9,12 +9,12 @@
             Pusher.logToConsole = true;
 
             var pusher = new Pusher('edce0b3687194e38683e', {
-            cluster: 'sa1'
+                cluster: 'sa1'
             });
 
             var channel = pusher.subscribe('my-channel');
-            channel.bind('my-event', function(data) {
-            alert(JSON.stringify(data));
+                channel.bind('my-event', function(data) {
+                alert(JSON.stringify(data));
             });
         </script>
     </head>

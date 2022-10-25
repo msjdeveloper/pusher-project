@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\FormSubmitted;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +13,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::post('/sender', function(){
+
+    $text = request()->text;
+    event(new FormSubmitted($text));
+});
+
+Route::get('/sender', function(){
+    return view('sender');
+});
+
 Route::get('/pusher', function(){
     return view('pusher');
 });
