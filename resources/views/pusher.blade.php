@@ -13,9 +13,10 @@
             });
 
             var channel = pusher.subscribe('my-channel');
-                channel.bind('my-event', function(data) {
+                channel.bind('from-form', function(data) {
                 alert(JSON.stringify(data));
             });
+
         </script>
     </head>
     <body>
