@@ -1,6 +1,10 @@
 <?php
 
-use App\Events\FormSubmitted;
+use App\Events\{
+    FormSubmitted,NodeSubmitted
+};
+use App\Models\User;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +18,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/sender', function(){
+Route::get('/senduser', function(){
+    $user = User::first();
+    event(new NodeSubmitted($user));
 
+});
+
+Route::post('/sender', function(){
     $text = request()->text;
     event(new FormSubmitted($text));
 });
