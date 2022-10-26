@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/senduser', function(){
-    $user = User::first();
+    $user = User::inRandomOrder()->first();
     event(new NodeSubmitted($user));
 
 });
